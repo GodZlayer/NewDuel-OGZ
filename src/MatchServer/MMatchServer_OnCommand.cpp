@@ -647,20 +647,22 @@ _STATUS_CMD_START;
 			{
 				MUID uidPlayer = pCommand->GetSenderUID();
 				u32 nCharIndex;
-				u32 nSex, nHair, nFace, nCostume;
+                                u32 nSex, nHair, nFace, nCostume, nRace, nBodyType;
 
 				char szCharName[128];
 
 				pCommand->GetParameter(&nCharIndex, 1, MPT_UINT);
 				if (pCommand->GetParameter(szCharName, 2, MPT_STR, sizeof(szCharName) )==false) break;
 				pCommand->GetParameter(&nSex, 3, MPT_UINT);
-				pCommand->GetParameter(&nHair, 4, MPT_UINT);
-				pCommand->GetParameter(&nFace, 5, MPT_UINT);
-				pCommand->GetParameter(&nCostume, 6, MPT_UINT);
+                                pCommand->GetParameter(&nHair, 4, MPT_UINT);
+                                pCommand->GetParameter(&nFace, 5, MPT_UINT);
+                                pCommand->GetParameter(&nCostume, 6, MPT_UINT);
+                                pCommand->GetParameter(&nRace, 7, MPT_UINT);
+                                pCommand->GetParameter(&nBodyType, 8, MPT_UINT);
 
-				OnRequestCreateChar(uidPlayer, nCharIndex, szCharName, nSex, nHair, nFace, nCostume);
-			}
-			break;
+                                OnRequestCreateChar(uidPlayer, nCharIndex, szCharName, nSex, nHair, nFace, nCostume, nRace, nBodyType);
+                        }
+                        break;
 		case MC_MATCH_ROUND_FINISHINFO:
 			{
 				MUID uidStage, uidChar;

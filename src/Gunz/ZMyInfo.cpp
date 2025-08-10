@@ -23,7 +23,9 @@ bool ZMyInfo::InitCharInfo(const char* szCharName,
 	MMatchClanGrade nClanGrade,
 	MMatchSex nSex,
 	int nHair,
-	int nFace)
+	int nFace,
+        int nRace,
+        int nBodyType)
 {
 	if (m_bCreated == true) 
 	{
@@ -36,6 +38,8 @@ bool ZMyInfo::InitCharInfo(const char* szCharName,
 	m_nSex = nSex;
 	m_nHair = nHair;
 	m_nFace = nFace;
+        m_nRace = nRace;
+        m_nBodyType = nBodyType;
 	m_nClanGrade = nClanGrade;
 
 	m_bCreated = true;

@@ -440,11 +440,11 @@ protected:
 	void OnRequestDeleteChar(const MUID& uidPlayer, int nCharIndex, const char* szCharName);
 	bool ResponseDeleteChar(const MUID& uidPlayer, int nCharIndex, const char* szCharName);
 	void OnRequestCreateChar(const MUID& uidPlayer, int nCharIndex, const char* szCharName,
-		unsigned int nSex, unsigned int nHair, unsigned int nFace,
-		unsigned int nCostume);
+                unsigned int nSex, unsigned int nHair, unsigned int nFace,
+                unsigned int nCostume, unsigned int nRace, unsigned int nBodyType);
 	bool ResponseCreateChar(const MUID& uidPlayer, int nCharIndex, const char* szCharName,
-		MMatchSex nSex, unsigned int nHair, unsigned int nFace,
-		unsigned int nCostume);
+                MMatchSex nSex, unsigned int nHair, unsigned int nFace,
+                unsigned int nCostume, unsigned int nRace, unsigned int nBodyType);
 	void OnCharClear(const MUID& uidPlayer);
 	bool CharInitialize(const MUID& uidPlayer);
 	bool CharFinalize(const MUID& uidPlayer);

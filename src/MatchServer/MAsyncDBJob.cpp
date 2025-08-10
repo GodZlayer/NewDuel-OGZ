@@ -61,17 +61,17 @@ void MAsyncDBJob_GetCharInfo::Run(void* pContext)
 	}
 
 #ifdef _DELETE_CLAN
-	// Å¬·£¿¡ °¡ÀÔµÈ Ä³¸¯ÅÍÀÌ¸é Æó¼â¿äÃ»µÈ Å¬·£ÀÎÁö °Ë»ç¸¦ ÇØÁà¾ß ÇÑ´Ù.
+	// í´ëœì— ê°€ì…ëœ ìºë¦­í„°ì´ë©´ íì‡„ìš”ì²­ëœ í´ëœì¸ì§€ ê²€ì‚¬ë¥¼ í•´ì¤˜ì•¼ í•œë‹¤.
 	if( 0 != m_pCharInfo->m_ClanInfo.m_nClanID )
 	{
-		// nWaitHourDiffÀÇ °ªÀÌ 0ÀÌ¸é Á¤»ó Å¬·£.
-		// 0 ÀÌ»óÀÌ¸é Æó¼â¿äÃ»ÀÌ Á¢¼öµÈ Å¬·£ÀÌ´Ù.
-		// Æó¼â ¿äÃ»µÈ Å¬·£À» Á¤»ó Å¬·£À¸·Î ¹Ù²ãÁÖ±â À§ÇØ¼­´Â,
-		//  ClanÅ×ÀÌºíÀÇ DeleteDate¸¦ NULL·Î ¼ÂÆÃÇØ Áà¾ß ÇÑ´Ù. - by SungE.
+		// nWaitHourDiffì˜ ê°’ì´ 0ì´ë©´ ì •ìƒ í´ëœ.
+		// 0 ì´ìƒì´ë©´ íì‡„ìš”ì²­ì´ ì ‘ìˆ˜ëœ í´ëœì´ë‹¤.
+		// íì‡„ ìš”ì²­ëœ í´ëœì„ ì •ìƒ í´ëœìœ¼ë¡œ ë°”ê¿”ì£¼ê¸° ìœ„í•´ì„œëŠ”,
+		//  Claní…Œì´ë¸”ì˜ DeleteDateë¥¼ NULLë¡œ ì…‹íŒ…í•´ ì¤˜ì•¼ í•œë‹¤. - by SungE.
 
 		if( UNDEFINE_DELETE_HOUR == nWaitHourDiff )
 		{
-			// Á¤»ó Å¬·£.
+			// ì •ìƒ í´ëœ.
 		}
 		else if( 0 > nWaitHourDiff )
 		{
@@ -79,20 +79,20 @@ void MAsyncDBJob_GetCharInfo::Run(void* pContext)
 		}
 		//else if( MAX_WAIT_CLAN_DELETE_HOUR < nWaitHourDiff )
 		//{
-		//	// Å¬·£Á¤º¸¸¦ DB¿¡¼­ »èÁ¦.
-		//	// ÀÌÀÛ¾÷Àº DBÀÇ Agent serverÀÛ¾÷À¸·Î ÀÏ°ı Ã³¸®È÷ÇÑ´Ù.
+		//	// í´ëœì •ë³´ë¥¼ DBì—ì„œ ì‚­ì œ.
+		//	// ì´ì‘ì—…ì€ DBì˜ Agent serverì‘ì—…ìœ¼ë¡œ ì¼ê´„ ì²˜ë¦¬íˆí•œë‹¤.
 		//}
 		else if( 0 <= nWaitHourDiff)
 		{
-			// ¾ÆÁ÷ DB´Â »èÁ¦ÇÏÁö ¾Ê°í, À¯Àú¸¸ ÀÏ¹İ À¯Àú·Î Ã³¸®ÇÔ.
+			// ì•„ì§ DBëŠ” ì‚­ì œí•˜ì§€ ì•Šê³ , ìœ ì €ë§Œ ì¼ë°˜ ìœ ì €ë¡œ ì²˜ë¦¬í•¨.
 			SetDeleteState( MMCDS_NORMAL );
 			m_pCharInfo->m_ClanInfo.Clear();
 		}
 	}
 #endif
 
-	// µğºñ¿¡¼­ ¾ÆÀÌÅÛ Á¤º¸¸¦ °¡Á®¿Â´Ù.
-	// ÀÌ°ÍÀº ÆÛÆ÷¸Õ½º ¹®Á¦·Î ³ªÁß¿¡ ÇÃ·¹ÀÌ¾î°¡ ÀÚ±â ¾ÆÀÌÅÛ º¸±â ÇÒ¶§¸¸ °¡Á®¿Í¾ß ÇÒµí
+	// ë””ë¹„ì—ì„œ ì•„ì´í…œ ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
+	// ì´ê²ƒì€ í¼í¬ë¨¼ìŠ¤ ë¬¸ì œë¡œ ë‚˜ì¤‘ì— í”Œë ˆì´ì–´ê°€ ìê¸° ì•„ì´í…œ ë³´ê¸° í• ë•Œë§Œ ê°€ì ¸ì™€ì•¼ í• ë“¯
 	m_pCharInfo->ClearItems();
 	if (!pDBMgr->GetCharItemInfo(*m_pCharInfo))
 	{
@@ -106,7 +106,7 @@ void MAsyncDBJob_GetCharInfo::Run(void* pContext)
 		m_pCharInfo->m_QuestItemList.Clear();
 		if( !pDBMgr->GetCharQuestItemInfo(m_pCharInfo) )
 		{
-			mlog( "MAsyncDBJob_GetCharInfo::Run - µğºñ¿¡¼­ Äù½ºÆ® ¾ÆÀÌÅÛ ¸ñ·ÏÀ» °¡Á®¿À´Âµ¥ ½ÇÆĞÇßÀ½.\n" );
+			mlog( "MAsyncDBJob_GetCharInfo::Run - ë””ë¹„ì—ì„œ í€˜ìŠ¤íŠ¸ ì•„ì´í…œ ëª©ë¡ì„ ê°€ì ¸ì˜¤ëŠ”ë° ì‹¤íŒ¨í–ˆìŒ.\n" );
 			SetResult(MASYNC_RESULT_FAILED);
 			return;
 		}
@@ -171,11 +171,11 @@ void MAsyncDBJob_CreateChar::Run(void* pContext)
 	auto* pDBMgr = static_cast<IDatabase*>(pContext);
 
 	m_nResult = pDBMgr->CreateCharacter(m_nAID, m_szCharName, m_nCharNum,
-		m_nSex, m_nHair, m_nFace, m_nCostume);
+		m_nSex, m_nHair, m_nFace, m_nCostume, m_nRace, m_nBodyType);
 
 	if (m_nResult == MOK)
 	{
-		// »ı¼ºµÇ¸é ·Î±×·Î ³²±ä´Ù.
+		// ìƒì„±ë˜ë©´ ë¡œê·¸ë¡œ ë‚¨ê¸´ë‹¤.
 		pDBMgr->InsertCharMakingLog(m_nAID, m_szCharName, CharMakingType::Create);
 	} else if (m_nResult == MERR_UNKNOWN) {
 		SetResult(MASYNC_RESULT_FAILED);
@@ -186,7 +186,7 @@ void MAsyncDBJob_CreateChar::Run(void* pContext)
 
 	MCommand* pNewCmd = pServer->CreateCommand(MC_MATCH_RESPONSE_CREATE_CHAR, MUID(0,0));
 	pNewCmd->AddParameter(new MCommandParameterInt(m_nResult));			// result
-	pNewCmd->AddParameter(new MCommandParameterString(m_szCharName));	// ¸¸µé¾îÁø Ä³¸¯ÅÍ ÀÌ¸§
+	pNewCmd->AddParameter(new MCommandParameterString(m_szCharName));	// ë§Œë“¤ì–´ì§„ ìºë¦­í„° ì´ë¦„
 
 	m_pResultCommand = pNewCmd;
 	SetResult(MASYNC_RESULT_SUCCEED);
@@ -367,11 +367,11 @@ bool MAsyncDBJob_InsertQuestGameLog::Input( const char* pszStageName,
 			m_PlayersCID[ i++ ] = itPlayer->second->GetCID();
 
 		if( itPlayer->second->GetUniqueItemList().empty() )
-			continue;	// ºñ¾îÀÖÀ»°æ¿ì ±×³É ¹«½Ã.
+			continue;	// ë¹„ì–´ìˆì„ê²½ìš° ê·¸ëƒ¥ ë¬´ì‹œ.
 
 		if( 0 == (pPlayer = new MQuestPlayerLogInfo) )
 		{
-			mlog( "MAsyncDBJob_InsertQuestGameLog::Input - ¸Ş¸ğ¸® ÇÒ´ç ½ÇÆĞ.\n" );
+			mlog( "MAsyncDBJob_InsertQuestGameLog::Input - ë©”ëª¨ë¦¬ í• ë‹¹ ì‹¤íŒ¨.\n" );
 			continue;
 		}
 
@@ -394,7 +394,7 @@ void MAsyncDBJob_InsertQuestGameLog::Run( void* pContext )
 
 		int nQGLID;
 
-		// ¿ì¼± Äù½ºÆ® °ÔÀÓ ·Î±×¸¦ ÀúÀåÇÔ.
+		// ìš°ì„  í€˜ìŠ¤íŠ¸ ê²Œì„ ë¡œê·¸ë¥¼ ì €ì¥í•¨.
 		if( !pDBMgr->InsertQuestGameLog(m_szStageName,
 			m_nScenarioID,
 			m_nMasterCID, m_PlayersCID[0], m_PlayersCID[1], m_PlayersCID[2],
@@ -406,7 +406,7 @@ void MAsyncDBJob_InsertQuestGameLog::Run( void* pContext )
 			return;
 		}
 
-		// À¯´ÏÅ© ¾ÆÀÌÅÛ¿¡ °üÇÑ µ¥ÀÌÅÍ´Â QUniqueItemLog¿¡ µû·Î ÀúÀåÀ» ÇØÁà¾ß ÇÔ.
+		// ìœ ë‹ˆí¬ ì•„ì´í…œì— ê´€í•œ ë°ì´í„°ëŠ” QUniqueItemLogì— ë”°ë¡œ ì €ì¥ì„ í•´ì¤˜ì•¼ í•¨.
 		int											i;
 		int											nCID;
 		int											nQIID;
@@ -420,7 +420,7 @@ void MAsyncDBJob_InsertQuestGameLog::Run( void* pContext )
 		for( ; itPlayer != endPlayer; ++itPlayer )
 		{
 			if( (*itPlayer)->GetUniqueItemList().empty() )
-				continue;	// À¯´ÏÅ© ¾ÆÀÌÅÛÀ» °¡Áö°í ÀÖÁö ¾ÊÀ¸¸é ¹«½Ã.
+				continue;	// ìœ ë‹ˆí¬ ì•„ì´í…œì„ ê°€ì§€ê³  ìˆì§€ ì•Šìœ¼ë©´ ë¬´ì‹œ.
 
 			nCID		= (*itPlayer)->GetCID();
 			itQUItem	= (*itPlayer)->GetUniqueItemList().begin();
