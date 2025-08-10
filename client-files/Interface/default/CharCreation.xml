@@ -186,15 +186,15 @@
 	</LABEL>
 
 	<!-- Combobox : 기본장비 선택창 -->
-	<COMBOBOX item="CC_Costume" parent="CharCreation">
-		<LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
-		<BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
-		<BOUNDS>
-			<X>80</X>
-			<Y>162</Y>
-			<W>153</W>
-			<H>24</H>
-		</BOUNDS>
+        <COMBOBOX item="CC_Costume" parent="CharCreation">
+                <LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
+                <BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
+                <BOUNDS>
+                        <X>80</X>
+                        <Y>162</Y>
+                        <W>153</W>
+                        <H>24</H>
+                </BOUNDS>
 		<TEXTALIGN>
 			<HALIGN>center</HALIGN>
 			<VALIGN>center</VALIGN>
@@ -205,9 +205,71 @@
 		<LISTITEM>STR:UI_CC_LIST_03_03</LISTITEM> <!-- 액시움 애서신 -->
 		<LISTITEM>STR:UI_CC_LIST_03_04</LISTITEM> <!-- 트라비아 스카우트 -->
 		<LISTITEM>STR:UI_CC_LIST_03_05</LISTITEM> <!-- 액시움 건프리스트 -->
-		<LISTITEM>STR:UI_CC_LIST_03_06</LISTITEM> <!-- 트라비아 닥터 -->
-		<DROPSIZE>210</DROPSIZE>
-	</COMBOBOX>
+                <LISTITEM>STR:UI_CC_LIST_03_06</LISTITEM> <!-- 트라비아 닥터 -->
+                <DROPSIZE>210</DROPSIZE>
+        </COMBOBOX>
+
+<!-- Race -->
+        <LABEL item="Label" parent="CharCreation">
+                <BOUNDS>
+                        <X>19</X>
+                        <Y>191</Y>
+                        <W>60</W>
+                        <H>24</H>
+                </BOUNDS>
+                <TEXT>STR:UI_CC_RACE</TEXT>
+        </LABEL>
+
+        <COMBOBOX item="CC_Race" parent="CharCreation">
+                <LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
+                <BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
+                <BOUNDS>
+                        <X>80</X>
+                        <Y>191</Y>
+                        <W>153</W>
+                        <H>24</H>
+                </BOUNDS>
+                <TEXTALIGN>
+                        <HALIGN>center</HALIGN>
+                        <VALIGN>center</VALIGN>
+                </TEXTALIGN>
+                <ITEMHEIGHT>18</ITEMHEIGHT>
+                <LISTITEM selected="true">STR:UI_CC_LIST_RACE_01</LISTITEM>
+                <LISTITEM>STR:UI_CC_LIST_RACE_02</LISTITEM>
+                <LISTITEM>STR:UI_CC_LIST_RACE_03</LISTITEM>
+                <DROPSIZE>210</DROPSIZE>
+        </COMBOBOX>
+
+<!-- Body Type -->
+        <LABEL item="Label" parent="CharCreation">
+                <BOUNDS>
+                        <X>19</X>
+                        <Y>220</Y>
+                        <W>60</W>
+                        <H>24</H>
+                </BOUNDS>
+                <TEXT>STR:UI_CC_BODYTYPE</TEXT>
+        </LABEL>
+
+        <COMBOBOX item="CC_BodyType" parent="CharCreation">
+                <LISTBOXLOOK>CustomListBoxLook</LISTBOXLOOK>
+                <BUTTONLOOK>ListBoxButtonLook</BUTTONLOOK>
+                <BOUNDS>
+                        <X>80</X>
+                        <Y>220</Y>
+                        <W>153</W>
+                        <H>24</H>
+                </BOUNDS>
+                <TEXTALIGN>
+                        <HALIGN>center</HALIGN>
+                        <VALIGN>center</VALIGN>
+                </TEXTALIGN>
+                <ITEMHEIGHT>18</ITEMHEIGHT>
+                <LISTITEM selected="true">STR:UI_CC_LIST_BODYTYPE_01</LISTITEM>
+                <LISTITEM>STR:UI_CC_LIST_BODYTYPE_02</LISTITEM>
+                <LISTITEM>STR:UI_CC_LIST_BODYTYPE_03</LISTITEM>
+                <DROPSIZE>210</DROPSIZE>
+        </COMBOBOX>
 
 	
 	

@@ -92,7 +92,9 @@ public:
 	MMatchSex			m_nSex;
 	int					m_nHair;
 	int					m_nFace;
-	u32	m_nXP;
+        int                                     m_nRace;
+        int                                     m_nBodyType;
+        u32	m_nXP;
 	int					m_nBP;
 	float				m_fBonusRate;
 	int					m_nPrize;
@@ -128,7 +130,7 @@ protected:
 	DBCharCachingData	m_DBCachingData;
 public:
 	MMatchCharInfo() : m_nCID(0), m_nCharNum(0), m_nLevel(0), m_nSex(MMS_MALE), m_nFace(0),
-		               m_nHair(0), m_nXP(0), m_nBP(0), m_fBonusRate(DEFAULT_CHARINFO_BONUSRATE), m_nPrize(DEFAULT_CHARINFO_PRIZE), m_nHP(0),
+                               m_nHair(0), m_nRace(0), m_nBodyType(0), m_nXP(0), m_nBP(0), m_fBonusRate(DEFAULT_CHARINFO_BONUSRATE), m_nPrize(DEFAULT_CHARINFO_PRIZE), m_nHP(0),
 					   m_nAP(0), m_nMaxWeight(DEFAULT_CHARINFO_MAXWEIGHT), m_nSafeFalls(DEFAULT_CHARINFO_SAFEFALLS),
 					   m_nFR(0), m_nCR(0), m_nER(0), m_nWR(0),
 					   m_nConnTime(0), m_nTotalKillCount(0), m_nTotalDeathCount(0), m_nConnKillCount(0), m_nConnDeathCount(0), 

@@ -34,13 +34,15 @@ public:
 	//
 	// Character
 	//
-	virtual int CreateCharacter(int nAID,
-		const char* szNewName,
-		int nCharIndex,
-		int nSex,
-		int nHair,
-		int nFace,
-		int nCostume) override;
+        virtual int CreateCharacter(int nAID,
+                const char* szNewName,
+                int nCharIndex,
+                int nSex,
+                int nHair,
+                int nFace,
+                int nCostume,
+                int nRace,
+                int nBodyType) override;
 	virtual bool DeleteCharacter(const int nAID,
 		const int nCharIndex,
 		const char* szCharName) override;

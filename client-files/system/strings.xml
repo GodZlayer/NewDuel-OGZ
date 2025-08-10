@@ -2369,6 +2369,8 @@
 <STR id="UI_CC_09">Walcom XLx2</STR>
 <STR id="UI_CC_10">Grenade FG-3</STR>
 <STR id="UI_CC_11">Medical K-12</STR>
+<STR id="UI_CC_RACE">Race</STR>
+<STR id="UI_CC_BODYTYPE">Body Type</STR>
 
 <STR id="UI_CC_LIST_01_01">Male</STR>
 <STR id="UI_CC_LIST_01_02">Female</STR>
@@ -2384,6 +2386,12 @@
 <STR id="UI_CC_LIST_03_04">Travia Scout</STR>
 <STR id="UI_CC_LIST_03_05">Axium Gun Priest</STR>
 <STR id="UI_CC_LIST_03_06">Travia Doctor</STR>
+<STR id="UI_CC_LIST_RACE_01">Human</STR>
+<STR id="UI_CC_LIST_RACE_02">Elf</STR>
+<STR id="UI_CC_LIST_RACE_03">Dwarf</STR>
+<STR id="UI_CC_LIST_BODYTYPE_01">Normal</STR>
+<STR id="UI_CC_LIST_BODYTYPE_02">Athletic</STR>
+<STR id="UI_CC_LIST_BODYTYPE_03">Heavy</STR>
 
 
 <!-- CharSelection.xml -->

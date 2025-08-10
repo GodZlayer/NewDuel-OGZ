@@ -94,13 +94,15 @@ public:
 
 	virtual bool BanPlayer(int nAID, const char *szReason, const time_t &UnbanTime) = 0;
 
-	virtual int CreateCharacter(int nAID,
-		const char* szNewName,
-		int nCharIndex,
-		int nSex,
-		int nHair,
-		int nFace,
-		int nCostume) = 0;
+        virtual int CreateCharacter(int nAID,
+                const char* szNewName,
+                int nCharIndex,
+                int nSex,
+                int nHair,
+                int nFace,
+                int nCostume,
+                int nRace,
+                int nBodyType) = 0;
 	virtual bool DeleteCharacter(const int nAID,
 		const int nCharIndex,
 		const char* szCharName) = 0;

@@ -56,7 +56,7 @@ protected:	// Input Argument
 
 protected:	// Output Result
 	MCommand*		m_pResultCommand;
-	int				m_nCharMaxLevel;		// newbie¿Œ¡ˆ √º≈©«œ±‚ ¿ß«‘
+	int				m_nCharMaxLevel;		// newbie√Ä√é√Å√∂ √É¬º√Ö¬©√á√è¬±√¢ √Ä¬ß√á√î
 public:
 	MAsyncDBJob_GetAccountCharList(const MUID& uid, int nAID) 
 		: MAsyncJob(MASYNCJOB_GETACCOUNTCHARLIST)
@@ -170,13 +170,15 @@ protected: // Input Argument
 	int			m_nHair;
 	int			m_nFace;
 	int			m_nCostume;
+        int                     m_nRace;
+        int                     m_nBodyType;
 
 protected:	// Output Result
 	int			m_nResult;
 	MCommand*	m_pResultCommand;
 
 public:
-	MAsyncDBJob_CreateChar(const MUID& uid, int nAID, const char* szCharName, int nCharNum, int nSex, int nHair, int nFace, int nCostume)
+	MAsyncDBJob_CreateChar(const MUID& uid, int nAID, const char* szCharName, int nCharNum, int nSex, int nHair, int nFace, int nCostume, int nRace, int nBodyType)
 	: MAsyncJob(MASYNCJOB_CREATECHAR)
 	{
 		m_uid = uid;
@@ -187,6 +189,8 @@ public:
 		m_nHair = nHair;
 		m_nFace = nFace;
 		m_nCostume = nCostume;
+                m_nRace = nRace;
+                m_nBodyType = nBodyType;
 		m_pResultCommand = NULL;
 		m_nResult = MERR_UNKNOWN;
 	}

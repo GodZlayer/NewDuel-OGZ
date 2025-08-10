@@ -583,18 +583,20 @@ void MAddSharedCommandTable(MCommandManager* CommandManager, MSharedCommandType:
 		C(MC_MATCH_RESPONSE_DELETE_CHAR, "Match.ResponseDeleteChar",
 			"Response Delete Character", MCDT_MACHINE2MACHINE);
 			P(MPT_INT, "Result");
-		C(MC_MATCH_REQUEST_CREATE_CHAR, "Match.RequestCreateChar",
-			"Request Create Character", MCDT_MACHINE2MACHINE);
-			P(MPT_UID, "uid");
-			P(MPT_UINT, "CharIndex", MCPCMinMax{ 0, MAX_CHAR_COUNT - 1 });
-			P(MPT_STR, "Name");
-			P(MPT_UINT, "Sex");
-			P(MPT_UINT, "Hair");
-			P(MPT_UINT, "Face");
-			P(MPT_UINT, "Costume");
-		C(MC_MATCH_RESPONSE_CREATE_CHAR, "Match.ResponseCreateChar", "Response Create Character", MCDT_MACHINE2MACHINE);
-			P(MPT_INT, "Result");
-			P(MPT_STR, "CharName");
+                C(MC_MATCH_REQUEST_CREATE_CHAR, "Match.RequestCreateChar",
+                        "Request Create Character", MCDT_MACHINE2MACHINE);
+                        P(MPT_UID, "uid");
+                        P(MPT_UINT, "CharIndex", MCPCMinMax{ 0, MAX_CHAR_COUNT - 1 });
+                        P(MPT_STR, "Name");
+                        P(MPT_UINT, "Sex");
+                        P(MPT_UINT, "Hair");
+                        P(MPT_UINT, "Face");
+                        P(MPT_UINT, "Costume");
+                        P(MPT_UINT, "Race");
+                        P(MPT_UINT, "BodyType");
+                C(MC_MATCH_RESPONSE_CREATE_CHAR, "Match.ResponseCreateChar", "Response Create Character", MCDT_MACHINE2MACHINE);
+                        P(MPT_INT, "Result");
+                        P(MPT_STR, "CharName");
 		C(MC_MATCH_REQUEST_COPY_TO_TESTSERVER, "Match.RequestCopyToTestServer", "Request Copy To TestServer", MCDT_MACHINE2MACHINE);
 			P(MPT_UID, "uidChar");
 		C(MC_MATCH_RESPONSE_COPY_TO_TESTSERVER, "Match.ResponseCopyToTestServer", "Response Copy To TestServer", MCDT_MACHINE2MACHINE);

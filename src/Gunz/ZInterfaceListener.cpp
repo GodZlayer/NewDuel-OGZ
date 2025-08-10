@@ -492,7 +492,7 @@ public:
 			}
 			else
 			{
-				ZApplication::GetGameInterface()->ShowMessage("¼±ÅÃÇÏ½Å ¸ÊÀÌ ¾ø½À´Ï´Ù. ¸ÊÀ» ¼±ÅÃÇØ ÁÖ¼¼¿ä.");
+				ZApplication::GetGameInterface()->ShowMessage("ì„ íƒí•˜ì‹  ë§µì´ ì—†ìŠµë‹ˆë‹¤. ë§µì„ ì„ íƒí•´ ì£¼ì„¸ìš”.");
 			}
 
 			return true;
@@ -1172,7 +1172,7 @@ BEGIN_IMPLEMENT_LISTENER(ZGetSelectCharacterButtonListener, MBTN_CLK_MSG)
 	}
 	else
 	{
-		ZApplication::GetGameInterface()->ShowMessage("ÇØ´ç ½½·Ô¿¡ Ä³¸¯ÅÍ°¡ ¾ø½À´Ï´Ù.");
+		ZApplication::GetGameInterface()->ShowMessage("í•´ë‹¹ ìŠ¬ë¡¯ì— ìºë¦­í„°ê°€ ì—†ìŠµë‹ˆë‹¤.");
 	}
 END_IMPLEMENT_LISTENER()
 
@@ -1275,13 +1275,15 @@ BEGIN_IMPLEMENT_LISTENER(ZGetCreateCharacterButtonListener, MBTN_CLK_MSG)
 	{
 		ZIDLResource* pResource = ZApplication::GetGameInterface()->GetIDLResource();
 		MEdit* pEdit = (MEdit*)pResource->FindWidget("CC_CharName");
-		MComboBox* pSexCB, *pHairCB, *pFaceCB, *pCostumeCB;
+		MComboBox* pSexCB, *pHairCB, *pFaceCB, *pCostumeCB, *pRaceCB, *pBodyTypeCB;
 		pSexCB = (MComboBox*)pResource->FindWidget("CC_Sex");
 		pHairCB = (MComboBox*)pResource->FindWidget("CC_Hair");
 		pFaceCB = (MComboBox*)pResource->FindWidget("CC_Face");
 		pCostumeCB = (MComboBox*)pResource->FindWidget("CC_Costume");
+                pRaceCB = (MComboBox*)pResource->FindWidget("CC_Race");
+                pBodyTypeCB = (MComboBox*)pResource->FindWidget("CC_BodyType");
 
-		if (!pSexCB || !pHairCB || !pFaceCB || !pCostumeCB || !pEdit)
+		if (!pSexCB || !pHairCB || !pFaceCB || !pCostumeCB || !pRaceCB || !pBodyTypeCB || !pEdit)
 			return true;
 
 		int nNameLen = (int)strlen( pEdit->GetText());
@@ -1314,7 +1316,8 @@ BEGIN_IMPLEMENT_LISTENER(ZGetCreateCharacterButtonListener, MBTN_CLK_MSG)
 		}
 
 		ZPostCreateMyChar( ZGetGameClient()->GetPlayerUID(), nEmptySlotIndex, (char*)pEdit->GetText(), pSexCB->GetSelIndex(),
-		                   pHairCB->GetSelIndex(), pFaceCB->GetSelIndex(), pCostumeCB->GetSelIndex());
+		                   pHairCB->GetSelIndex(), pFaceCB->GetSelIndex(), pCostumeCB->GetSelIndex(),
+                                   pRaceCB->GetSelIndex(), pBodyTypeCB->GetSelIndex());
 
 	}
 END_IMPLEMENT_LISTENER()

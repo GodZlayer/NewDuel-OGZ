@@ -400,15 +400,20 @@ inline void ZPostDeleteMyChar(const MUID& uidChar, const int nCharIndex, char* s
 }
 
 inline void ZPostCreateMyChar(const MUID& uidChar, const int nCharIndex, char* szCharName,
-							  const int nSex, const int nHair, const int nFace, const int nCostume)
+                                                          const int nSex, const int nHair, const int nFace, const int nCostume,
+                                                          const int nRace, const int nBodyType)
 {
-	ZPOSTCMD7(MC_MATCH_REQUEST_CREATE_CHAR, MCommandParameterUID(uidChar),
-		MCommandParameterUInt(nCharIndex),
-		MCommandParameterString(szCharName),
-		MCommandParameterUInt(nSex),
-		MCommandParameterUInt(nHair),
-		MCommandParameterUInt(nFace),
-		MCommandParameterUInt(nCostume));
+        MCommand* pCmd = ZNewCmd(MC_MATCH_REQUEST_CREATE_CHAR);
+        pCmd->AddParameter(new MCommandParameterUID(uidChar));
+        pCmd->AddParameter(new MCommandParameterUInt(nCharIndex));
+        pCmd->AddParameter(new MCommandParameterString(szCharName));
+        pCmd->AddParameter(new MCommandParameterUInt(nSex));
+        pCmd->AddParameter(new MCommandParameterUInt(nHair));
+        pCmd->AddParameter(new MCommandParameterUInt(nFace));
+        pCmd->AddParameter(new MCommandParameterUInt(nCostume));
+        pCmd->AddParameter(new MCommandParameterUInt(nRace));
+        pCmd->AddParameter(new MCommandParameterUInt(nBodyType));
+        ZPostCommand(pCmd);
 }
 
 inline void ZPostSimpleCharInfo(const MUID& uidChar)

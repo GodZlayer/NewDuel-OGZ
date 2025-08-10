@@ -587,7 +587,7 @@ catch (const SQLiteError& e)
 	return false;
 }
 
-int SQLiteDatabase::CreateCharacter(int AID, const char * NewName, int CharIndex, int Sex, int Hair, int Face, int Costume)
+int SQLiteDatabase::CreateCharacter(int AID, const char * NewName, int CharIndex, int Sex, int Hair, int Face, int Costume, int Race, int BodyType)
 try
 {
 
@@ -601,11 +601,11 @@ try
 
 	auto Trans = BeginTransaction();
 
-	ExecuteSQL("INSERT INTO Character (AID, Name, CharNum, Level, Sex, Hair, Face, XP, BP, "
-		"GameCount, KillCount, DeathCount, RegDate, PlayTime, DeleteFlag) "
-		"Values(?, ?, ?, 1, ?, ?, ?, 0, 0, "
-		"0, 0, 0, date('now'), 0, 0)",
-		AID, NewName, CharIndex, Sex, Hair, Face);
+        ExecuteSQL("INSERT INTO Character (AID, Name, CharNum, Level, Sex, Hair, Face, Race, BodyType, XP, BP, "
+                "GameCount, KillCount, DeathCount, RegDate, PlayTime, DeleteFlag) "
+                "Values(?, ?, ?, 1, ?, ?, ?, ?, ?, 0, 0, "
+                "0, 0, 0, date('now'), 0, 0)",
+                AID, NewName, CharIndex, Sex, Hair, Face, Race, BodyType);
 
 	auto CID = LastInsertedRowID();
 
@@ -732,7 +732,7 @@ try
 
 	auto CID = stmt.Get<int>();
 
-	stmt = ExecuteSQL("SELECT Name, CharNum, Level, Sex, Hair, Face, XP, BP, "
+        stmt = ExecuteSQL("SELECT Name, CharNum, Level, Sex, Hair, Face, Race, BodyType, XP, BP, "
 		"(SELECT cl.Name FROM Clan cl, ClanMember cm WHERE cm.cid = ?1 AND cm.CLID = cl.CLID) AS ClanName, "
 		"Items "
 		"FROM Character "
@@ -745,11 +745,13 @@ try
 	strcpy_safe(outCharInfo->szName, stmt.Get<StringView>());
 	outCharInfo->nCharNum = stmt.Get<int>();
 	outCharInfo->nLevel = stmt.Get<int>();
-	outCharInfo->nSex = stmt.Get<int>();
-	outCharInfo->nHair = stmt.Get<int>();
-	outCharInfo->nFace = stmt.Get<int>();
-	outCharInfo->nXP = stmt.Get<int>();
-	outCharInfo->nBP = stmt.Get<int>();
+        outCharInfo->nSex = stmt.Get<int>();
+        outCharInfo->nHair = stmt.Get<int>();
+        outCharInfo->nFace = stmt.Get<int>();
+        outCharInfo->nRace = stmt.Get<int>();
+        outCharInfo->nBodyType = stmt.Get<int>();
+        outCharInfo->nXP = stmt.Get<int>();
+        outCharInfo->nBP = stmt.Get<int>();
 
 	if (!stmt.IsNull())
 	{
